@@ -32,6 +32,8 @@ public class FileDetailValidatorChain implements ValidatorChain {
 
     @Override
     public String doValidate(RequestDetail requestDetail, RequestFile requestFile) throws BusinessValidationException {
+        // todo 可调整为依据 order处理顺序
+
         List<Validator> validators = validatorMap.get(workflowId);
         //防止第二次文件校验的时候出现index没有重新设置为0
         //并且每个业务流程的index应该是独立的

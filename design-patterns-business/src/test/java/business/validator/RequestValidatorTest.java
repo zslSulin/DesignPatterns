@@ -42,8 +42,8 @@ public class RequestValidatorTest extends SpringTestBase {
 
         String validationResult;
         //校验文件头
-        validationResult = requestValidator.validateFileInfo(requestFile);
-        AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
+//        validationResult = requestValidator.validateFileInfo(requestFile);
+//        AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
 
         File archiveFile = new File(filePath + File.separator + fileName);
 
@@ -53,11 +53,11 @@ public class RequestValidatorTest extends SpringTestBase {
         requestFile.setTextLines(textLines);
         System.out.println("校验文件前，文件明细行数为:" + requestFile.getDetailLines().size());
         //校验文件里的概要信息
-        validationResult = requestValidator.validateSummary(requestFile);
-        AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
+//        validationResult = requestValidator.validateSummary(requestFile);
+//        AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
         //校验文件中的列名
-        validationResult = requestValidator.validateHeaders(requestFile);
-        AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
+//        validationResult = requestValidator.validateHeaders(requestFile);
+//        AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
         //校验文件明细
         validationResult = requestValidator.validateDetails(requestFile);
         AssertUtil.assertTrue(Constants.VALID.equals(validationResult), validationResult);
