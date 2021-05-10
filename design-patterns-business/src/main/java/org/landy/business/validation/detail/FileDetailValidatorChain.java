@@ -34,6 +34,7 @@ public class FileDetailValidatorChain implements ValidatorChain {
     public String doValidate(RequestDetail requestDetail, RequestFile requestFile) throws BusinessValidationException {
         // todo 可调整为依据 order处理顺序
 
+        // 获取执行链上的执行器集合
         List<Validator> validators = validatorMap.get(workflowId);
         //防止第二次文件校验的时候出现index没有重新设置为0
         //并且每个业务流程的index应该是独立的
@@ -69,7 +70,7 @@ public class FileDetailValidatorChain implements ValidatorChain {
                 return this;
             }
         }
-
+        // 执行器链路添加
         validators.add(validator);
 
         validatorMap.put(workflowId,validators);

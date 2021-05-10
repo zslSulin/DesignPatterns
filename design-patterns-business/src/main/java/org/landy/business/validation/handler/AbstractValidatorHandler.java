@@ -70,36 +70,41 @@ public abstract class AbstractValidatorHandler implements ApplicationListener<Co
         fileDetailValidatorChain.addValidator(validatorInstance,getWorkflowId());
     }
 
+    /**
+     * 执行链业务id
+     */
     protected abstract WorkflowEnum getWorkflowId();
     /**
      * the package need to be added the validators
-     * @return
+     * 该执行链 扫码执行器支持的 packages
      */
     protected abstract Set<String> getBasePackages();
 
     /**
      * the classes need to be excluded
-     * @return
+     * 该执行链添加 执行器时 需要移除的执行器
      */
     protected abstract Set<Class> excludeClasses();
 
     /**
      * the spring bean name
-     * @return
+     * 执行器名称
      */
     protected abstract String accessBeanName();
 
     private void addValidators() {
+        // 1. 获取所有实现 Validator 接口的 Class
         List<Class<? extends Validator>> validators = getValidators();
 
+        // 2. 循环体内添加
         validators.forEach((validator) -> {
             String simpleName = validator.getSimpleName();
             String beanName = simpleName.substring(0, 1).toLowerCase() + simpleName.substring(1);
 
             LOGGER.info("Added validator:{},spring bean name is:{}",simpleName,beanName);
-
+            // 2.1 获取校验器实例
             Validator validatorInstance = ApplicationUtil.getApplicationContext().getBean(beanName,validator);
-
+            // 2.2 校验器加入执行链
             fileDetailValidatorChain.addValidator(validatorInstance,getWorkflowId());
 
         });

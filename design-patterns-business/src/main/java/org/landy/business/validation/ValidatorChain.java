@@ -16,5 +16,12 @@ public interface ValidatorChain<T extends RequestDetail,F extends RequestFile> {
 
     String doValidate(T requestDetail, F requestFile) throws BusinessValidationException;
 
+    /**
+     * 执行链 添加执行器
+     *
+     * @param validator 执行器
+     * @param workflowId 执行链id
+     * @return 执行链
+     */
     ValidatorChain addValidator(Validator validator, WorkflowEnum workflowId);
 }

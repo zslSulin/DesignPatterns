@@ -23,6 +23,9 @@ public abstract class AbstractRequestValidation {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(AbstractRequestValidation.class);
 
+    /**
+     * key 执行业务id value：执行器chain名称
+     */
     private static Map<WorkflowEnum,String> requestValidationHandlerMap = new HashMap<>();
 
     @Autowired

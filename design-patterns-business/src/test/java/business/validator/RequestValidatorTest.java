@@ -20,7 +20,8 @@ import java.util.List;
  * @author landyl
  * @create 3:51 PM 05/13/2018
  */
-public class RequestValidatorTest extends SpringTestBase {
+public class
+RequestValidatorTest extends SpringTestBase {
 
     @Autowired
     private RequestValidator requestValidator;
